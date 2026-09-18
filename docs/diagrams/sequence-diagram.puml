@@ -1,0 +1,26 @@
+@startuml
+actor User
+participant Main
+participant TransactionManager
+participant AnomalyDetector
+participant FlaggedTransaction
+participant ReportGenerator
+
+User -> Main : Select Run Fraud Detection
+Main -> User : Request user ID
+User --> Main : Enter user ID
+Main -> TransactionManager : getTransactionsByUser(userId)
+TransactionManager --> Main : List<Transaction>
+Main -> AnomalyDetector : detectDuplicates(transactions)
+AnomalyDetector -> FlaggedTransaction : Create duplicate flags
+AnomalyDetector --> Main : Duplicate flags
+Main -> AnomalyDetector : detectSpikes(transactions)
+AnomalyDetector -> FlaggedTransaction : Create spike flags
+AnomalyDetector --> Main : Spike flags
+Main -> AnomalyDetector : detectOddTiming(transactions)
+AnomalyDetector -> FlaggedTransaction : Create odd-timing flags
+AnomalyDetector --> Main : Odd-timing flags
+Main -> ReportGenerator : generateFlaggedReport(userId)
+ReportGenerator --> Main : Display formatted report
+Main --> User : Show detection results
+@enduml

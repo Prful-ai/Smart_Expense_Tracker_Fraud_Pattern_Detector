@@ -1,0 +1,9 @@
+# Compiled Java output
+out/
+
+# Local tooling downloaded for diagram generation
+tools/
+
+# IDE metadata
+.vscode/
+.idea/

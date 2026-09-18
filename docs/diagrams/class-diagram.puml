@@ -1,0 +1,78 @@
+@startuml
+skinparam classAttributeIconSize 0
+
+class Transaction {
+  - int id
+  - String userId
+  - double amount
+  - String category
+  - LocalDateTime timestamp
+  - String description
+  + Transaction(...)
+  + getters / setters
+  + toString() : String
+}
+
+class User {
+  - String userId
+  - String name
+  - List~Transaction~ transactions
+  + addTransaction(Transaction)
+  + removeTransaction(Transaction)
+  + getTransactions() : List~Transaction~
+}
+
+class TransactionManager {
+  - List~Transaction~ transactions
+  + addTransaction(Transaction)
+  + deleteTransaction(int)
+  + updateTransaction(Transaction)
+  + getAllTransactions() : List~Transaction~
+  + getTransactionsByUser(String) : List~Transaction~
+  + getTransactionsByCategory(String) : List~Transaction~
+  + getTransactionsByDateRange(LocalDateTime, LocalDateTime) : List~Transaction~
+}
+
+class InvalidTransactionException <<checked exception>>
+
+class AnomalyDetector {
+  + detectDuplicates(List~Transaction~) : List~FlaggedTransaction~
+  + detectSpikes(List~Transaction~) : List~FlaggedTransaction~
+  + detectOddTiming(List~Transaction~) : List~FlaggedTransaction~
+  + calculateMean(List~Transaction~) : double
+  + calculateStdDev(List~Transaction~) : double
+}
+
+class FlaggedTransaction {
+  - Transaction transaction
+  - String reason
+  - int riskScore
+}
+
+class ReportGenerator {
+  + generateMonthlySummary(String)
+  + generateFlaggedReport(String)
+}
+
+class FileStorage {
+  + saveTransactions(List~Transaction~)
+  + loadTransactions() : List~Transaction~
+}
+
+class Main {
+  + main(String[])
+}
+
+User "1" *-- "0..*" Transaction : owns
+TransactionManager "1" o-- "0..*" Transaction : manages
+FlaggedTransaction "1" *-- "1" Transaction : wraps
+TransactionManager ..> InvalidTransactionException : throws
+AnomalyDetector ..> TransactionManager : reads data
+AnomalyDetector ..> FlaggedTransaction : creates
+ReportGenerator ..> TransactionManager : queries
+ReportGenerator ..> AnomalyDetector : runs rules
+Main ..> TransactionManager
+Main ..> ReportGenerator
+Main ..> FileStorage
+FileStorage ..> Transaction : CSV mapping
+@enduml

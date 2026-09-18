@@ -1,0 +1,31 @@
+@startuml
+package "CLI / Presentation Layer" {
+  component "Main" as Main
+}
+package "Business Logic Layer" {
+  component "TransactionManager" as Manager
+  component "AnomalyDetector" as Detector
+  component "ReportGenerator" as Reports
+}
+package "Data Model Layer" {
+  component "Transaction" as Transaction
+  component "User" as UserModel
+  component "FlaggedTransaction" as Flagged
+}
+package "Persistence Layer" {
+  component "FileStorage" as Storage
+  database "transactions.csv" as Csv
+}
+Main --> Manager
+Main --> Reports
+Main --> Storage
+Reports --> Manager
+Reports --> Detector
+Detector --> Manager
+Manager --> Transaction
+UserModel --> Transaction
+Detector --> Flagged
+Flagged --> Transaction
+Storage --> Transaction
+Storage --> Csv
+@enduml

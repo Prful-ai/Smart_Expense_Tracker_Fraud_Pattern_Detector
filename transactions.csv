@@ -1,0 +1,9 @@
+id,userId,amount,category,timestamp,description
+1,user-1,10.0,Food,2026-09-15T12:00,Lunch
+2,user-1,10.0,food,2026-09-15T12:03,Lunch
+3,user-1,10.0,food,2026-09-15T12:04,dinner
+4,user-1,12.0,food,2026-09-15T12:08,dinner
+5,user-1,100.0,food,2026-09-15T12:20,Large restaurant bill
+6,user-1,25.0,travel,2026-09-15T02:30,late night ride
+101,user-3,25.0,food,2026-09-18T12:03,lunch
+102,user-3,25.0,food,2026-09-18T12:04,lunch

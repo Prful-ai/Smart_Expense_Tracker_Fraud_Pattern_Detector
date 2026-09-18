@@ -1,0 +1,18 @@
+@startuml
+left to right direction
+actor User
+rectangle "Smart Expense & Fraud-Pattern Detector" {
+  usecase "Add Transaction" as Add
+  usecase "View Transactions" as View
+  usecase "Run Fraud Detection" as Detect
+  usecase "View Monthly Report" as Monthly
+  usecase "View Flagged Transactions" as Flagged
+  usecase "Exit Application" as Exit
+}
+User --> Add
+User --> View
+User --> Detect
+User --> Monthly
+User --> Flagged
+User --> Exit
+@enduml

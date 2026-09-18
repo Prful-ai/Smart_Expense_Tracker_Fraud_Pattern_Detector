@@ -1,0 +1,28 @@
+@startuml
+start
+:Start application;
+:Load transactions from CSV;
+:Display menu;
+repeat
+  :User selects option;
+  if (Add transaction?) then (yes)
+    :Validate and add transaction;
+  elseif (View transactions?) then (yes)
+    :Display all transactions;
+  elseif (Run fraud detection?) then (yes)
+    :Run duplicate, spike,
+and odd-timing rules;
+    :Display detection results;
+  elseif (View monthly report?) then (yes)
+    :Display monthly summary;
+  elseif (View flagged transactions?) then (yes)
+    :Display flagged report;
+  else (exit)
+    break
+  endif
+  :Return to menu;
+repeat while (Continue running?)
+:Save transactions to CSV;
+:End application;
+stop
+@enduml
