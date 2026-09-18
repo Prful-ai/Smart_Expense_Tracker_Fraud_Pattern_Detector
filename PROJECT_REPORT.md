@@ -149,18 +149,21 @@ Spike-detection tests verify that the `mean + 2 * standard deviation` threshold 
 
 ## Screenshots / Results
 
+### Main Menu
 
-(1) main menu
-![main menu](image.png),
+![Main menu](docs/screenshots/main-menu.png)
 
-(2) adding a transaction,
-![Add_Transaction](image-1.png)
+### Adding a Transaction
 
-(3) monthly summary report.
-![monthly_report](image-2.png)
+![Adding a transaction](docs/screenshots/add-transaction.png)
 
-(4) DUPLICATE Transaction
-![Duplicate](image-3.png)
+### Monthly Summary Report
+
+![Monthly summary report](docs/screenshots/monthly-report.png)
+
+### Duplicate Transaction Report
+
+![Duplicate transaction report](docs/screenshots/flagged-report.png)
 
 ## Challenges Faced
 
