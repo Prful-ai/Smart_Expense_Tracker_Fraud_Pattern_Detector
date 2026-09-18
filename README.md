@@ -4,11 +4,32 @@ A pure Java console application for tracking expenses and identifying suspicious
 
 The application uses only standard JDK classes for production code. It does not require external libraries to compile or run.
 
+## Project Documentation
+
+See [statement.md](statement.md) for the problem statement and scope, and [PROJECT_REPORT.md](PROJECT_REPORT.md) for the full project report including design diagrams and rationale.
+
 ## Project Structure
 
 ```text
 Java_Project2/
+├── .gitignore
 ├── README.md
+├── PROJECT_FILES.md
+├── PROJECT_REPORT.md
+├── statement.md
+├── transactions.csv
+├── docs/
+│   ├── diagrams/
+│   │   ├── class-diagram.png
+│   │   ├── use-case-diagram.png
+│   │   ├── sequence-diagram.png
+│   │   ├── architecture-diagram.png
+│   │   └── workflow-diagram.png
+│   └── screenshots/
+│       ├── main-menu.png
+│       ├── add-transaction.png
+│       ├── monthly-report.png
+│       └── flagged-report.png
 ├── src/
 │   └── com/
 │       └── expensetracker/
@@ -45,6 +66,13 @@ com.expensetracker
 - Generate flagged-transaction reports
 - Save and load data from a readable CSV file
 - Validate user input without crashing the application
+
+## Technologies Used
+
+- Java JDK 26.0.1
+- Standard JDK libraries only for production code
+- JUnit 5 for unit testing
+- CSV for data persistence
 
 ## Class Walkthrough
 
@@ -285,6 +313,32 @@ java -cp out com.expensetracker.Main
 ```
 
 The application will display the menu and wait for input.
+
+## Screenshots
+
+### Main Menu
+
+![Main menu](docs/screenshots/main-menu.png)
+
+This screenshot shows the application's main CLI menu and available operations.
+
+### Adding a Transaction
+
+![Adding a transaction](docs/screenshots/add-transaction.png)
+
+This screenshot shows the prompts used to enter and validate a new expense transaction.
+
+### Monthly Summary Report
+
+![Monthly summary report](docs/screenshots/monthly-report.png)
+
+This screenshot shows the monthly total, category spending, and top expense categories.
+
+### Flagged Transactions Report
+
+![Flagged transactions report](docs/screenshots/flagged-report.png)
+
+This screenshot shows suspicious transactions with their anomaly reasons and risk scores.
 
 ## Manual Walkthrough
 
